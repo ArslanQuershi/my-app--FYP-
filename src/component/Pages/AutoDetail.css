@@ -1,0 +1,137 @@
+.wrapping-1 img{
+    width: 100%;
+}
+
+.wrapping-1 p{
+    width: 70%;
+    position: absolute;
+    top: 36%;
+    left: 15%;
+    color: white;
+    font-size: 3rem;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0, 0.4);
+    text-align: center;
+}
+.wrappingbtn{
+    position: absolute;
+    top: 72%;
+    left: 42%;
+    font-size: 2rem;
+    width: 15%;
+    border: 4px solid white;
+    background-color: transparent;
+    border-radius: 24px;
+    color: white;
+}
+.wrappingbtn:hover{
+    background-color: red;
+    color: white;
+    border: 2px solid red;
+}
+.wrappingtext h2{
+    padding: 0 1rem;
+   text-align: start;
+}
+.wrappingtext p{
+ padding: 0 1rem;
+ line-height: 2rem;
+}
+.wrappingtext p i{
+    color: red;
+    margin: 0 1rem;
+}
+
+
+/* Package Section */
+#Pakage-heading {
+    background-color: #fff;
+}
+#Pakage-heading h2{
+    background-color: black;
+    color: white;
+}
+.Pakage-section{
+    width: 100%;
+    display: flex;
+}
+.Pakage-section h5{
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+}
+.Pakage-section h6{
+    color: red;
+    font-size: x-large;
+}
+
+.wash-wax{
+    width: 25%;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 10px;
+    margin: 1rem 1rem;
+    height: 250px;
+}
+.wash-wax p{
+    margin: 1rem 1.5rem;
+}
+.Interior{
+    width: 25%; 
+    text-align: center; 
+    border: 1px solid red;
+    border-radius: 10px;
+    margin: 1rem 1rem;
+    height: 250px;
+}
+.Interior p{
+    margin: 1rem 1.5rem;
+}
+.Exterior{
+    width: 25%; 
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 10px;
+    margin: 1rem 1rem;
+    height: 250px;
+}
+.Exterior p{
+    margin: 1rem 1.5rem;
+}
+.Complete-detail{
+    width: 25%;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 10px;
+    margin: 1rem 1rem;
+    height: 250px;
+}
+.Complete-detail p{
+    margin: 1rem 1.5rem;
+}
+
+.sub-service-btn{
+  border: 2px solid red;
+  background-color: transparent;
+  color: red;
+  border-radius: 24px;
+}
+
+.sub-service-btn:hover{
+    background-color: red;
+    color: #fff;
+}
+@media(max-width:480px){
+    .wrapping-1 p{
+        width: 90%;
+        font-size: 1.5rem;
+        top: 14%;
+        left: 5%;
+    }
+    .wrappingbtn{
+        width: 30%;
+        font-size: 1rem;
+         top: 30%;
+        left: 35%;  
+    }
+}

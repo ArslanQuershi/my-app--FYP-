@@ -1,0 +1,280 @@
+
+
+.bg-body-tertiary {
+    display: block; 
+    background-color: black !important;
+    
+}
+/* for image */
+/* #logo{
+    width: 63px;
+} */
+.container-fluid p{
+    margin-bottom: 0;
+    color: white;
+    font-weight: 500;
+    font-size: larger;
+    width: 30rem;
+}
+
+.container-fluid span{
+    color: red;
+}
+/* menu bars */
+.navbar-toggler-icon{
+    background-color: white;
+}
+
+/* for home */
+
+.navbar-nav .nav-link.active{
+    
+    color: white;
+}
+.navbar-nav .nav-link.active:hover{
+    color: red;
+}
+/* for about */
+.nav-link{
+    
+    color: white !important;
+}
+.nav-link:hover  {
+    color: red !important;
+}
+.nav-link:focus  {
+    color: red !important;
+}
+
+/* for contact */
+.nav-link.disabled{
+    
+    color: white;
+}
+.nav-link.disabled:hover{
+    color: red;
+    cursor: pointer;
+}
+a{
+    list-style: none;
+    text-decoration: none;
+}
+#signin{
+    color: white;
+    padding-right: 30px;
+
+}
+#signin:hover{
+    color: red;
+
+}
+#signdrop{
+    position: absolute;
+    top: 75%;
+    width: 103px !important;
+    left: 1128px ;
+}
+/* model */
+.popup{
+    background-color: white;
+    border: 5px solid white;
+    height: 55%;
+    width: 20% ;
+    text-align: center;
+    border-radius: 10px;
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    outline-style:  solid;
+    outline-color: red;
+ }
+ .popup h4{
+    color: red;
+    margin-top: 15%;
+    margin-left: 28%;
+    width: 100px;
+    font-weight: 600;
+   
+ }
+ #login-span{
+    color: black;
+ }
+ #login-span a{
+    color: red;
+ }
+ #login-span a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+ }
+ 
+ .form12 input{
+    
+   margin: 1rem 0;
+   color: black;
+   background-color: transparent;
+    border: 0px;
+    border-bottom: 2px solid #c3bebe;
+    
+ }
+ 
+ .login{
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    width: 200px;
+    border: 0;
+    
+ }
+ .login:hover{
+    cursor: pointer;
+    background-color: rgb(197, 25, 25);
+    color: white;
+ }
+ .popup1{
+    background-color: white;
+    border: 5px solid white;
+    height: 60%;
+    width: 25% ;
+    color: black;
+    text-align: center;
+    position: absolute;
+    top: 25%;
+    left: 37%;
+    border-radius: 10px;
+    outline-style:  solid;
+    outline-color: red;
+ }
+ .popup1 h4{
+    color: red;
+    margin-top: 12%;
+    margin-left: 30%;
+    width: 100px;
+ }
+ #close{
+    background-color: transparent;
+    border: 0;
+    color: black;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+ }
+ /* resechdule */
+ .reschedule-appoint{
+    
+    background-color: white;
+    height: 70%;
+    width: 30%;
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 33%;
+    border-radius: 10px;
+    outline-style:  solid;
+    outline-color: red;
+ }
+ .reschedule-appoint h4{
+    margin-top: 5%;
+    color: red;
+    border-radius: 10px;
+ }
+ .form4 input{
+   
+    margin: 0.5rem 0.2rem; 
+    color: black;
+   background-color: transparent;
+   border-bottom: 2px solid #c3bebe;
+    border-top: 0;
+   border-left: 0;
+   border-right: 0;
+ } 
+ .form4 label{
+   color: black;
+   text-align: center;
+   margin-left: 0;
+   margin-right: 2rem;
+ }
+ .form4 p{
+   color: black;
+   margin-top: 1rem;
+   margin-bottom: 0;
+ }
+ .submit{
+    background-color: red;
+    color: white;
+    width: 200px;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+ }
+ .submit:hover{
+    
+    cursor: pointer;
+    background-color: rgb(233, 46, 46);
+    color: white;
+ }
+ /* cancel Appointment */
+ .cancel-appoint{
+    background-color: white;
+    height: 50%;
+    width: 25%;
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 38%;
+    border-radius: 10px;
+    outline-style:  solid;
+    outline-color: red;
+ }
+ .cancel-appoint h4{
+    margin-top: 5%;
+    color: red;
+    border-radius: 10px;
+ }
+ .form5 input{
+   
+    margin: 1rem 1rem; 
+    color: black;
+   background-color: transparent;
+    border: 0px;
+    border-bottom: 2px solid #c3bebe; 
+ } 
+ .form5 p{
+    color: black;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  .submit{
+    background-color: red;
+    color: white;
+    width: 200px;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+ }
+ .submit:hover{
+    
+    cursor: pointer;
+    background-color: rgb(233, 46, 46);
+    color: white;
+ }
+ 
+ @media(max-width:480px){
+    .container-fluid p{
+        width: 17.5rem;
+    }  
+    #signdrop{
+        position: absolute;
+        top: 100% !important;
+        left: 0 !important;
+    }
+    .popup{
+        width: 70%;
+        
+        left: 0;
+        margin-left: 3.5rem;
+    }
+    .popup1{
+        width: 80%;
+        left: 0;
+        margin-left: 2rem;
+    }
+
+}

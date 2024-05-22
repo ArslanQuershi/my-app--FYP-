@@ -1,0 +1,82 @@
+h2{
+    text-align: center;
+}
+
+.container1{
+    display: flex;
+}
+Span{
+    color: red;
+}
+.content{
+    line-height: 2rem;
+}
+.content i{
+    color: red;
+    padding: 0 1rem;
+}
+.btn{
+    border: 2px solid red;
+    background-color: white;
+    color: red;
+    border-radius: 24px;
+}
+.btn:hover{
+    cursor: pointer;
+    background-color: red;
+    color: white;
+}
+.images img{
+    width: 100%;
+}
+.container2{
+    display: flex;
+    padding-top: 2rem;
+    padding-bottom: 4.3rem;
+}
+.content2{
+    width: 150%;
+}
+.nav-item{
+    padding: 1rem 0 ;   
+}
+
+
+.points{
+    color: black ;
+    text-decoration: none;  
+ }
+ .points:hover{
+    color: red;
+    cursor: pointer;
+ }
+
+ .text-1{
+    text-align: center;
+    line-height: 2rem;
+ }
+ .pic{
+    display: flex;
+ }
+ .imgtext1 img{
+    width: 100%;
+    border-radius: 50%;
+ }
+
+@media(max-width:480px){
+    .container1{
+        flex-direction: column;
+    }
+    .images img{
+        padding: 1rem 0;
+    }
+    .container2{
+        flex-direction: column;
+    }
+    .content2{
+        width: 100%;
+    }
+    .dropdown-menu.show{
+        width: 100%;
+    }
+}

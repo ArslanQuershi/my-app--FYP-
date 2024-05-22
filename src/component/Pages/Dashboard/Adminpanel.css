@@ -1,0 +1,61 @@
+ .admin-panel {
+    display: flex;
+    flex-direction: column-reverse;
+  } 
+  
+  .sidebar {
+    background-color: #000;
+    color: #fff;
+    width: 250px;
+    height: 100vh;
+  }
+  .sidebar h3{
+    text-align: center;
+    padding: 1.5rem 0;
+  }
+  .sidebar i{
+    padding-right: 15px;
+  }
+  .sidebar ul li {
+    padding: 20px 20px;
+}
+.sidebar ul li:hover{
+  background-color: red;
+  cursor: pointer;
+}
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  
+  .sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+  }   
+  .Panel-nav nav{
+    background-color: #000;
+    color: #fff;
+    height: 12%;
+    width: 81% ;
+    position: absolute;
+    left: 19%;
+  }
+  .Panel-nav nav h3{
+    margin: 1rem 1rem;
+  }
+  
+   
+  .visit-btn{
+    background-color: #fff;
+    padding: 1rem 0;
+    
+  }
+  .visit-btn button{
+    color: #fff;
+    background-color: red;
+    border: 2px solid red;
+    border-radius: 10px;
+    margin-left: 1rem;
+  }

@@ -1,0 +1,335 @@
+
+ #container1 img {
+    background-size: cover;
+    width: 100%;
+    
+} 
+#text{   
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center; 
+   color:white; 
+   width: 100%;
+   position: absolute;
+   top: 18%;
+   animation-name: text;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+ } 
+ #text h1{
+    /* position: absolute;
+    top: 15%;
+    left: 25%;
+    right: 50%;
+    width: 50%; */
+    
+    width: 0ch;
+    overflow: hidden;
+    white-space: nowrap;
+    animation-name: text1;
+    animation-duration: 7s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+
+ }
+ @keyframes text1{
+    0%{
+        /* top: 10%; */
+        width: 0ch;
+    }
+    25%{
+        /* top: 15%; */
+        width: 15ch;
+    }
+    75%{
+        /* top: 20%; */
+        width: 38ch;
+    }
+    
+ }
+ #text p{
+     position: absolute;
+    top: 100%;
+    margin-top: 10px;
+    /* width: 50%; */
+    width: 0ch;
+    
+    overflow: hidden;
+    white-space: nowrap;
+    animation-name: text2;
+    animation-duration: 7s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+ 
+ }
+ @keyframes text2{
+   0%{
+       /* top: 10%; */
+       width: 0ch;
+   }
+   25%{
+       /* top: 15%; */
+       width: 30ch;
+       
+   }
+   75%{
+       /* top: 20%; */
+       width: 88ch;
+       
+   }
+   
+}
+ .appoint{
+    position: absolute;
+    top: 100%;
+    margin-top: 70px;
+    border-radius: 24px;
+    background-color: transparent;
+    color: white;
+     border: 2px solid white; 
+ }
+ .appoint:hover{
+   border: 2px solid red;
+     color: white; 
+    background-color: red;
+    transition: 0.6s;
+    cursor: pointer;
+ }
+ .content{
+     padding: 0 2rem;
+ }
+
+  .heading h2{
+    text-align: center;
+ }
+ .container3{
+    display: flex;
+ }
+ .image{
+    width: 100%;
+ }
+ 
+ .image img{
+    width: 100%;
+    padding: 1rem 1rem;
+ }
+ .container3 p{
+    padding: 1rem 2rem;
+    line-height: 2rem;
+ }
+ .container4{
+    display: flex;
+    
+ }
+ .text1{
+    padding: 1rem 7rem;
+ }
+ .text1 i{
+    padding: 0 1rem;
+    color: red;
+ }
+ .text1 h4
+ {
+    padding: 0 2rem;
+ }
+ .icon{
+    text-align: center;
+    padding: 1rem 0;
+ }
+ #ribbon{
+    font-size: xx-large;
+ }
+ .text2{
+    padding: 1rem 7rem;
+ }
+ .text2 i{
+    padding: 0 1rem;
+    color: red;
+ }
+ .text2 h4
+ {
+    padding: 0 2rem;
+ }
+ #contact{
+    font-size: xx-large;
+ } 
+ .container5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .content5{
+    /* padding: 1rem 8rem; */
+    text-align: center;
+    
+ }
+ /* .content5 img{
+    width: 140%;
+ } */
+ .content5 h4{
+    /* width: 150%; */
+    text-align: center;
+ }
+ .content5 p{
+    /* width: 150%; */
+    padding: 0rem 2rem;
+    text-align: center;
+ }
+ 
+ .model{
+    
+    background-color: white;
+    height: 70%;
+    width: 40%;
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 33%;
+    border-radius: 10px;
+    outline-style:  solid;
+    outline-color: red;
+ }
+ .model h4{
+    margin-top: 5%;
+    color: red;
+    border-radius: 10px;
+ }
+ 
+  .form3 input{
+    
+    border-bottom: 2px solid #c3bebe;
+    margin: 0.5rem 1rem; 
+    color: black;
+   background-color: transparent;
+   border-top: 0;
+   border-left: 0;
+   border-right: 0;
+    
+ } 
+ .form3 label{
+   color: black;
+   text-align: center;
+   margin-left: 0;
+   margin-right: 2rem;
+ }
+ .form3 p{
+   color: black;
+   margin-top: 1rem;
+   margin-bottom: 0;
+ }
+ .submit{
+    background-color: red;
+    color: white;
+    width: 200px;
+    border-radius: 10px;
+    border: 0;
+    margin: 0.5rem 0;
+ }
+ .submit:hover{
+    
+    cursor: pointer;
+    background-color: rgb(233, 46, 46);
+    color: white;
+ }
+ #close{
+    
+    color: black;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+ }
+ @media(max-width:480px){
+    #container1 img {
+        background-size: cover;
+        width: 100%;
+    
+    }
+    #text{
+        position: absolute;
+    top: 10%;
+        width: 100%;
+        
+    }
+    
+    #text h1{
+        width: 50%;
+        font-size: large;
+    }
+    #text p{
+        margin-top: 50px;
+        width: 90%;
+        font-size: small;
+    }
+    .appoint{
+        margin-top: 130px;
+    }
+    .container2{
+        width: 100%;
+    }
+    .heading{
+        width: 100%;
+    }
+    .container3{
+        width: 100%;
+        flex-direction: column;
+    }
+    .image img{
+        width: 100%;
+    }
+    .container4{
+        width: 100%;
+        flex-direction: column;
+    }
+    .text1{
+        width: 100%;
+        padding: 0 1rem;
+    }
+    .text1 h4{
+        text-align: center;
+    }
+    .text1 p{
+        text-align: start;
+        
+    }
+    .text1 i{
+        padding: 0 1rem;
+    }
+    .text2{
+        width: 100%;
+        padding: 0 1rem;
+    }
+    .text2 h4{
+        text-align: center;
+    }
+    .text2 p{
+        text-align: start;
+        
+    }
+    .text2 i{
+        padding: 0 1rem;
+    }
+    .container5{
+        flex-direction: column;
+    }
+    .content5{
+        padding: 1rem 2rem;
+    }
+    .content5 img{
+        width: 100%;
+        
+    }
+    .content5 h4{
+        width: 100%;
+    }
+    .content5 p{
+        width: 100%;
+    }
+    .model{
+        width: 90%;
+        left: 0;
+        margin-left: 1.2rem;
+        
+    }
+}
