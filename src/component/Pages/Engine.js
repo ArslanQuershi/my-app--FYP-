@@ -1,38 +1,93 @@
-import React, { useState } from 'react'
+import React, {useContext, useRef, useState} from 'react'
 import Model from 'react-modal'
+import {UserContext} from "./UserContext";
+import AuthContext from "./AuthContext";
+import axios from "axios";
 
 function Engine() {
-  const [visible, setvisible] =useState(false)
+    const { userId } = useContext(UserContext);
+
+    const { IsloggedIn } = useContext(AuthContext);
+
+    const [formData, setFormData] = useState({
+        user_id: '',
+        name: '',
+        phone: '',
+        email: '',
+        car_model: '',
+        car_year: '',
+        appointment_data: '',
+        appointment_time: '',
+        service_type: '',
+        price: '',
+        service_package: '',
+    });
+
+    const [formVisible, setFormVisible] = useState(false);
+    const handleBookClick = (packageName, price) => {
+        setFormData({
+            ...formData,
+            user_id: userId,
+            service_type: "engine detailing",
+            service_package: packageName,
+            price: price,
+        });
+        setFormVisible(true);
+    };
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!IsloggedIn) {
+            alert('You must be logged in to book an appointment.');
+            window.location.href = '/';
+            return;
+
+        }
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/appointments', formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+            });
+            alert("appointment booked against your logged in email");
+            console.log('Appointment booked:', response.data);
+
+        } catch (error) {
+            if (error.response) {
+                console.error('Error response:', error.response.data);
+            } else if (error.request) {
+                console.error('Error request:', error.request);
+            } else {
+                console.error('Error message:', error.message);
+            }
+        }
+    };
+
+    const packageSectionRef = useRef(null);
+    const scrollToPackageSection = () => {
+        if (packageSectionRef.current) {
+            packageSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
   return (
     <>
       <div className='Engine-1'>
     <img src='./Pictures/Engine1.jpeg'></img>
     
     <p>Engine Detailing<br/> Cleaning the exterior of the engine and the engine compartment.</p>
-    <button className='enginebtn'onClick={()=>setvisible(true)} >Book now</button>
-     {/* Appointment form */}
-     <Model className='model' isOpen={visible}>
-        <h4>Book Your Appointment</h4>
-        <form className='form3'>
-        <input placeholder=' First Name' type='text'/>
-        <input placeholder=' Last Name' type='text'/><br/>
-        <input placeholder=' Phone' type='text'/>
-        <input placeholder=' Email' type='Email'/><br/>
-        <input type='text' placeholder='Car Model'/>
-        <input type='text' placeholder='Car Year'/><br/>
-        <input type="date" id="date" name="date" class="dtt"/>
-        <input type="time" id="time" name="utime" min="8:00" max="20:00" value="8:00" class="dtt" /><br/>
-        
-        <p>Tick the services you are interested in?</p><br/>
-        <input type='checkbox'/> <label>Ceramic coating</label>
-        <input type='checkbox'/> <label>Glass coating</label><br/>
-        <input type='checkbox'/><label>Paint Protection Film</label>
-        <input type='checkbox'/><label>Car Wrapping</label><br/>
-           
-         <button className='submit'>Submit</button>
-        </form>
-        <button id='close' onClick={()=>setvisible(false)}>X</button>
-      </Model>
+          <button className='wrappingbtn'
+                  onClick={scrollToPackageSection}>
+              Book now
+          </button>
 
     </div>
     <div className='Enginetext'>
@@ -53,22 +108,60 @@ function Engine() {
       </div>
     </div>
     {/* Pakage Section */}
-    <div id='Pakage-heading'>
+    <div id='Pakage-heading' ref={packageSectionRef}>
     <h2>Pakages we offer</h2>
     <div className='Pakage-section-engine'>
-      <div className='Engine-bay'>
-        <h5>Engine Bay Cleaning</h5>
-        <h6>PKR 8000</h6>
-        <p> A full sweep of all components, making sure they are washed, scrubbed and degreased to keep them functioning as intended.</p>
-        <button className='sub-service-btn'>Book</button>
-      </div>
-      <div className='Complete-engine'>
-      <h5>Complete Engine Detailing</h5>
-      <h6>PKR 10000</h6>
-       <p> Cleaning the exterior of the engine and the engine compartment, and applying dressing to protect and beautify the engine.</p>
-       <button className='sub-service-btn'>Book</button>
-      </div>
+        <div className='Engine-bay'>
+            <h5>Engine Bay Cleaning</h5>
+            <h6>PKR 8000</h6>
+            <p> A full sweep of all components, making sure they are washed, scrubbed and degreased to keep them
+                functioning as intended.</p>
+            <button className='sub-service-btn'
+                    onClick={() => handleBookClick('engine bay cleaning', 8000)}>Book
+            </button>
+        </div>
+        <div className='Complete-engine'>
+            <h5>Complete Engine Detailing</h5>
+            <h6>PKR 10000</h6>
+            <p> Cleaning the exterior of the engine and the engine compartment, and applying dressing to protect and beautify the engine.</p>
+            <button className='sub-service-btn'
+                    onClick={() => handleBookClick('complete engine detailing', 10000)}>Book
+            </button>
+        </div>
     </div>
+        <Model className='model' isOpen={formVisible}>
+
+            {formVisible && (
+
+                <form className='form3'
+                      onSubmit={handleSubmit}>
+                    <h4>BOOK FOR APPOINTMENT FOR AUTO DETAILING</h4>
+                    <input type='text' name='name' placeholder='Name' value={formData.name} onChange={handleChange}
+                           required/><br/>
+                    <input type='text' name='phone' placeholder='Phone' value={formData.phone} onChange={handleChange}
+                           required/><br/>
+                    <input type='email' name='email' placeholder='Email' value={formData.email}
+                           onChange={handleChange} required/><br/>
+                    <input type='text' name='car_model' placeholder='car_model' value={formData.car_model}
+                           onChange={handleChange} required/><br/>
+                    <input type='text' name='car_year' placeholder='car_year' value={formData.car_year}
+                           onChange={handleChange} required/><br/>
+                    <input type='date' name='appointment_data' placeholder='appointment_data'
+                           value={formData.appointment_data}
+                           onChange={handleChange} required/><br/>
+                    <input type='time' name='appointment_time' placeholder='appointment_time'
+                           value={formData.appointment_time}
+                           onChange={handleChange} required/>
+                    <input type='hidden' name='service_type' value={formData.service_type}/>
+                    <input type='hidden' name='price' value={formData.price}/>
+                    <input type='hidden' name='service_package' value={formData.service_package}/><br/><br/>
+                    <button type='submit' className='sub-service-btn'>Submit</button>
+                    <br/><br/>
+                    <button type='button' className='sub-service-btn' onClick={() => setFormVisible(false)}>Close
+                    </button>
+                </form>
+            )}
+        </Model>
     </div>
     </>
   )

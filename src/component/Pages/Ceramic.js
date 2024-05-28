@@ -1,43 +1,98 @@
-import React, { useState } from 'react'
+import React, {useState, useRef, useContext} from 'react'
 import Model from 'react-modal'
+import axios from 'axios';
+import AuthContext from './AuthContext';
+import {UserContext, UserProvider} from "./UserContext";
 
 function Ceramic() {
-  const [visible, setvisible] =useState(false)
+
+    const { userId } = useContext(UserContext);
+
+    const { IsloggedIn } = useContext(AuthContext);
+
+    const [formData, setFormData] = useState({
+        user_id: '',
+        name: '',
+        phone: '',
+        email: '',
+        car_model: '',
+        car_year: '',
+        appointment_data: '',
+        appointment_time: '',
+        service_type: '',
+        price: '',
+        service_package: '',
+    });
+
+    const [formVisible, setFormVisible] = useState(false);
+    const handleBookClick = (packageName, price) => {
+        setFormData({
+            ...formData,
+            user_id: userId,
+            service_type: "ceramic coating",
+            service_package: packageName,
+            price: price,
+        });
+        setFormVisible(true);
+    };
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!IsloggedIn) {
+            alert('You must be logged in to book an appointment.');
+            window.location.href = '/';
+            return;
+
+        }
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/appointments', formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+            });
+            alert("appointment booked against your logged in email");
+            console.log('Appointment booked:', response.data);
+
+        } catch (error) {
+            if (error.response) {
+                console.error('Error response:', error.response.data);
+            } else if (error.request) {
+                console.error('Error request:', error.request);
+            } else {
+                console.error('Error message:', error.message);
+            }
+        }
+    };
+
+    const packageSectionRef = useRef(null);
+    const scrollToPackageSection = () => {
+        if (packageSectionRef.current) {
+            packageSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
   return (
     <>
-    <div className='cream-1'>
-    <img src='./Pictures/creamic.jpg' ></img>
-    
-    <p>Creamic Coating<br/>Also known as glass coating.</p>
-    <button className='creambtn' onClick={()=>setvisible(true)} >Book now</button>
-    {/* Appointment form */}
-    <Model className='model' isOpen={visible}>
-        <h4>Book Your Appointment</h4>
-        <form className='form3'>
-        <input placeholder=' First Name' type='text'/>
-        <input placeholder=' Last Name' type='text'/><br/>
-        <input placeholder=' Phone' type='text'/>
-        <input placeholder=' Email' type='Email'/><br/>
-        <input type='text' placeholder='Car Model'/>
-        <input type='text' placeholder='Car Year'/><br/>
-        <input type="date" id="date" name="date" class="dtt"/>
-        <input type="time" id="time" name="utime" min="8:00" max="20:00" value="8:00" class="dtt" /><br/>
-        
-        <p>Tick the services you are interested in?</p><br/>
-        <input type='checkbox'/> <label>Ceramic coating</label>
-        <input type='checkbox'/> <label>Glass coating</label><br/>
-        <input type='checkbox'/><label>Paint Protection Film</label>
-        <input type='checkbox'/><label>Car Wrapping</label><br/>
-           
-         <button className='submit'>Submit</button>
-        </form>
-        <button id='close' onClick={()=>setvisible(false)}>X</button>
-      </Model>
+        <div className='cream-1'>
+            <img src='./Pictures/creamic.jpg'></img>
 
-    </div>
-    <div className='creamtext'>
-      <h2>What is Ceramic Coating?</h2>
-      <p>A ceramic coating is a product that is in a form of Pquid appPed on the external body of the car. The chemicals involved into the Pquid are mild and effective that bonds quickly with the texture of the car’s paint. The ceramic coating is a valuable protection layer that shields the car from contamination and dirt particles. With the usage of ceramic appPcation the paint is covered into a strong layer of secluded form. Moreover, it can be called as a defensive substance that provides a long durabiPty to the exterior parts of the vehicle.  The consuming time of the ceramic coating is great and does not require after few months. The ceramic chemical bonds with the surface of the car for more than twelve months, that adds up a supreme protection towards the body of the car. In addition, the ceramic product is also known as the wax alternative that does not wash away or break down perhaps it stays for a longer time. The coating gives a result that the surface becomes resiPent smooth and easier to clean. In addition, none of the product serves this kind of sPckness, protection and durabiPty.</p>
+            <p>Creamic Coating<br/>Also known as glass coating.</p>
+            <button className='wrappingbtn'
+                    onClick={scrollToPackageSection}>
+                Book now
+            </button>
+        </div>
+        <div className='creamtext'>
+            <h2>What is Ceramic Coating?</h2>
+            <p>A ceramic coating is a product that is in a form of Pquid appPed on the external body of the car. The chemicals involved into the Pquid are mild and effective that bonds quickly with the texture of the car’s paint. The ceramic coating is a valuable protection layer that shields the car from contamination and dirt particles. With the usage of ceramic appPcation the paint is covered into a strong layer of secluded form. Moreover, it can be called as a defensive substance that provides a long durabiPty to the exterior parts of the vehicle.  The consuming time of the ceramic coating is great and does not require after few months. The ceramic chemical bonds with the surface of the car for more than twelve months, that adds up a supreme protection towards the body of the car. In addition, the ceramic product is also known as the wax alternative that does not wash away or break down perhaps it stays for a longer time. The coating gives a result that the surface becomes resiPent smooth and easier to clean. In addition, none of the product serves this kind of sPckness, protection and durabiPty.</p>
       <h2>BENEFITS OF CERAMIC COATING</h2>
       
         <p><i class="fa-solid fa-check"></i>It protects the car’s paint from UV radiations and oxidation</p>
@@ -75,36 +130,79 @@ function Ceramic() {
       </div>
     </div>
     {/* Pakage section */}
-    <div id='Pakage-heading'>
+    <div id='Pakage-heading' ref={packageSectionRef}>
     <h2>Pakages we offer</h2>
     <div className='Pakage-section'>
       <div className='month-3'>
         <h5>3 Month Glass/Ceramic Coating</h5>
         <h6>PKR 5000</h6>
         <p>A Ceramic Coating creates a bond that last as long as the factory specs for that particular coating,</p>
-        <button className='sub-service-btn'>Book</button>
+          <button className='sub-service-btn'
+                  onClick={() => handleBookClick('3 Month Ceramic', 5000)}>Book
+          </button>
       </div>
-      <div className='year-1'>
-      <h5>1 Year Glass/Ceramic Coating</h5>
-      <h6>PKR 10000</h6>
-       <p> An extra layer protection on top of the paint which much harder than clear coat helping keep your vehicle looking like new</p>
-       <button className='sub-service-btn'>Book</button>
-      </div>
-      <div className='year-2'>
-      <h5>2 Year Glass/Ceramic Coating</h5>
-      <h6>PKR 18000</h6>
-      <p> The coating chemically bonds with the vehicles clear coat, creating an extra layer of protection.</p>
-      <button className='sub-service-btn'>Book</button>
-      </div>
-      <div className='year-5'>
-      <h5>5 Year Glass/Ceramic Coating</h5>
-      <h6>PKR 35000</h6>
-      <p>A Ceramic Coating is a liquid polymer that is applied by hand to the vehicle’s surface and may also be applied to other areas.</p>
-      <button className='sub-service-btn'>Book</button>
-      </div>
+        <div className='year-1'>
+            <h5>1 Year Glass/Ceramic Coating</h5>
+            <h6>PKR 10000</h6>
+            <p> An extra layer protection on top of the paint which much harder than clear coat helping keep your vehicle looking like new</p>
+            <button className='sub-service-btn'
+                    onClick={() => handleBookClick('1 year ceramic', 10000)}>Book
+            </button>
+        </div>
+        <div className='year-2'>
+            <h5>2 Year Glass/Ceramic Coating</h5>
+            <h6>PKR 18000</h6>
+            <p> The coating chemically bonds with the vehicles clear coat, creating an extra layer of protection.</p>
+            <button className='sub-service-btn'
+                    onClick={() => handleBookClick('2 year ceramic', 18000)}>Book
+            </button>
+        </div>
+        <div className='year-5'>
+            <h5>5 Year Glass/Ceramic Coating</h5>
+            <h6>PKR 35000</h6>
+            <p>A Ceramic Coating is a liquid polymer that is applied by hand to the vehicle’s surface and may also be applied to other areas.</p>
+            <button className='sub-service-btn'
+                    onClick={() => handleBookClick('5 year ceramic', 35000)}>Book
+            </button>
+        </div>
     </div>
+        <Model className='model' isOpen={formVisible}>
+
+            {formVisible && (
+
+                <form className='form3'
+                      onSubmit={handleSubmit}>
+                    <h4>BOOK FOR APPOINTMENT FOR AUTO DETAILING</h4>
+                    <input type='text' name='name' placeholder='Name' value={formData.name} onChange={handleChange}
+                           required/><br/>
+                    <input type='text' name='phone' placeholder='Phone' value={formData.phone} onChange={handleChange}
+                           required/><br/>
+                    <input type='email' name='email' placeholder='Email' value={formData.email}
+                           onChange={handleChange} required/><br/>
+                    <input type='text' name='car_model' placeholder='car_model' value={formData.car_model}
+                           onChange={handleChange} required/><br/>
+                    <input type='text' name='car_year' placeholder='car_year' value={formData.car_year}
+                           onChange={handleChange} required/><br/>
+                    <input type='date' name='appointment_data' placeholder='appointment_data'
+                           value={formData.appointment_data}
+                           onChange={handleChange} required/><br/>
+                    <input type='time' name='appointment_time' placeholder='appointment_time'
+                           value={formData.appointment_time}
+                           onChange={handleChange} required/>
+                    <input type='hidden' name='service_type' value={formData.service_type}/>
+                    <input type='hidden' name='price' value={formData.price}/>
+                    <input type='hidden' name='service_package' value={formData.service_package}/><br/><br/>
+                    <button type='submit' className='sub-service-btn'>Submit</button>
+                    <br/><br/>
+                    <button type='button' className='sub-service-btn' onClick={() => setFormVisible(false)}>Close
+                    </button>
+                </form>
+            )}
+        </Model>
+
+
     </div>
-    
+
     </>
   )
 }

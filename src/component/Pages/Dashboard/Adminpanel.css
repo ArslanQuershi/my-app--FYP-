@@ -37,13 +37,14 @@
   .Panel-nav nav{
     background-color: #000;
     color: #fff;
-    height: 12%;
-    width: 81% ;
+    height: 10%;
+    width: 87% ;
     position: absolute;
-    left: 19%;
+    left: 13%;
   }
   .Panel-nav nav h3{
-    margin: 1rem 1rem;
+    margin-left: 35%;
+    margin-top: 15px;
   }
   
    
@@ -58,4 +59,10 @@
     border: 2px solid red;
     border-radius: 10px;
     margin-left: 1rem;
+  }
+  .writing{
+
+    margin-left: 10px;
+
+
   }

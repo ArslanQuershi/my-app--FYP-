@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Model from 'react-modal'
+import {Link} from "react-router-dom";
 
 function Blog() {
   const [visible, setvisible] =useState(false)
@@ -7,66 +8,65 @@ function Blog() {
     <>
       <h2>ABOUT US</h2>
       <div className='container1'>
-         <div className='content'>
-          <h3> <span>IMPERIAL</span> CAR CARE</h3>
-          <span>Professional Car Care & Detailing Services in Rawalpindi</span>
-          <p>IMPERIAL is a specialized and service oriented car detailing company located in Rawalpindi. In This Website You Will Get To Know About  IMPERIAL And  Their Service .Experts in precision cleaning, polishing, coatings and also waxing cars. You are our guest as proud car owner and your precious possession is assured of a conditioned and safe environment where we can work to perfection. Our goal is to provide our customers with the friendliest, most convenient car detailing experience.</p>
-          <p><i class="fa-solid fa-check"></i>We use professional equipment and also have a fully trained detailing crew</p>
-          <p><i class="fa-solid fa-check"></i>We use American and European professional line car care products for detailing</p>
-          <p><i class="fa-solid fa-check"></i>Detailing will increase glamour and also resale value of your car</p>
-          <button className='btn'onClick={()=>setvisible(true)} > Book Now</button>
-          {/* Appointment form */}
-          <Model className='model' isOpen={visible}>
-        <h4>Book Your Appointment</h4>
-        <form className='form3'>
-        <input placeholder=' First Name' type='text'/>
-        <input placeholder=' Last Name' type='text'/><br/>
-        <input placeholder=' Phone' type='text'/>
-        <input placeholder=' Email' type='Email'/><br/>
-        <input type='text' placeholder='Car Model'/>
-        <input type='text' placeholder='Car Year'/><br/>
-        <input type="date" id="date" name="date" class="dtt"/>
-        <input type="time" id="time" name="utime" min="8:00" max="20:00" value="8:00" class="dtt" /><br/>
-        
-        <p>Tick the services you are interested in?</p><br/>
-        <input type='checkbox'/> <label>Ceramic coating</label>
-        <input type='checkbox'/> <label>Glass coating</label><br/>
-        <input type='checkbox'/><label>Paint Protection Film</label>
-        <input type='checkbox'/><label>Car Wrapping</label><br/>
-           
-         <button className='submit'>Submit</button>
-        </form>
-        <button id='close' onClick={()=>setvisible(false)}>X</button>
-      </Model>
-      
-         </div>
+          <div className='content'>
+              <h3><span>IMPERIAL</span> CAR CARE</h3>
+              <span>Professional Car Care & Detailing Services in Rawalpindi</span>
+              <p>IMPERIAL is a specialized and service oriented car detailing company located in Rawalpindi. In This
+                  Website You Will Get To Know About IMPERIAL And Their Service .Experts in precision cleaning,
+                  polishing, coatings and also waxing cars. You are our guest as proud car owner and your precious
+                  possession is assured of a conditioned and safe environment where we can work to perfection. Our goal
+                  is to provide our customers with the friendliest, most convenient car detailing experience.</p>
+              <p><i className="fa-solid fa-check"></i>We use professional equipment and also have a fully trained detailing
+                  crew</p>
+              <p><i className="fa-solid fa-check"></i>We use American and European professional line car care products for
+                  detailing</p>
+              <p><i className="fa-solid fa-check"></i>Detailing will increase glamour and also resale value of your car</p>
+              <nav>
+                  <ul>
+                      <li>
+                          <button className="nav-link dropdown-toggle btn-style" href="#"
+                                  data-bs-toggle="dropdown" aria-expanded="false">
+                              BOOK YOUR SLOT
+                          </button>
+                          <ul className="dropdown-menu">
+                              <li><Link className="dropdown-item" to="/AutoDetail">Auto Detailing</Link></li>
+                              <li><Link className="dropdown-item" to="/Ceramic">Ceramic Coating</Link></li>
+                              <li><Link className="dropdown-item" to="/Engine">Engine Detailing</Link></li>
+                              <li><Link className="dropdown-item" to="/Paint">Paint Protection Film</Link></li>
+                          </ul>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
           <div className='images'>
-            <img src='./Pictures/img2.webp'></img>
+              <img src='./Pictures/img2.webp'></img>
           </div>
       </div>
-      <div className='container2'>
-        <div className='content2'>
-          <h3>OUR 5 P'S OF DETAILING</h3>
-        <div className="nav-item dropdown">
-          <a className="points dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-         PHILOSOPHY
-          </a>
-          <ul className="dropdown-menu">
-            <li><p className="dropdown-item" >American Products are used quality service.</p></li>
-          </ul>
-          </div>
+        <div className='container2'>
+            <div className='content2'>
+                <h3>OUR 5 P'S OF DETAILING</h3>
+                <div className="nav-item dropdown">
+                    <a className="points dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        PHILOSOPHY
+                    </a>
+                    <ul className="dropdown-menu">
+                        <li><p className="dropdown-item">American Products are used quality service.</p></li>
+                    </ul>
+                </div>
 
-          <div className="nav-item dropdown">
-          <a className="points dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          PROCESS
-          </a>
-          <ul className="dropdown-menu">
-            <li><p className="dropdown-item" >Process includes evaluation, precision cleaning .</p></li>
-          </ul>
-          </div>
+                <div className="nav-item dropdown">
+                    <a className="points dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        PROCESS
+                    </a>
+                    <ul className="dropdown-menu">
+                    <li><p className="dropdown-item">Process includes evaluation, precision cleaning .</p></li>
+                    </ul>
+                </div>
 
-          <div className="nav-item dropdown">
-          <a className="points dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div className="nav-item dropdown">
+                    <a className="points dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           PEOPLE
           </a>
           <ul className="dropdown-menu">
